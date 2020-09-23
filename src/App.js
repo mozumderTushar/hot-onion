@@ -8,6 +8,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Services from './components/Services/Services';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route exact path="/">
             <Banner />
             <FoodItems />
+            <Services/>
+            <Footer/>
           </Route>
         </Switch>
       </Router>
