@@ -1,0 +1,16 @@
+.logo{
+    height: 80px;
+}
+
+a.nav-link {
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+a.signup.nav-link {
+    background: red;
+    border-radius: 23px;
+    color: white;
+    margin-left: 30px;
+}
