@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../App';
 import fakeData from '../../fakeData/foodItems'
 import './FoodItems.css'
 
 const FoodItems = () => {
+    const [cart, setCart] = useContext(CartContext)
+    
+  
     const [active, setActive] = useState({
         lunch: true,
         breakfast: false,
@@ -17,6 +21,7 @@ const FoodItems = () => {
     }, [])
 
     const handleCart = (category) => {
+        
         const newCart = fakeData.filter(pd => pd.category === category)
         setFoodItems(newCart)
         if (category === "breakfast") {
@@ -44,6 +49,7 @@ const FoodItems = () => {
             setActive(temp)
         }
     }
+    
     return (
         <div className="container">
             <div className="my-3 itemsNameBtn">
@@ -75,6 +81,12 @@ const FoodItems = () => {
                     ))
                 }
             </div>
+            {
+               
+               cart.length !== 0 ? <Link to="/delivery"><button className="btn btn-danger">Checkout Your Food</button></Link> :
+               <button className="btn btn-danger" disabled>Checkout Your Food</button>
+                
+            }
         </div>
     );
 };
