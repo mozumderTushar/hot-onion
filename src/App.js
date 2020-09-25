@@ -14,13 +14,18 @@ import NotFound from './components/NotFound/NotFound';
 import FoodDetails from './components/FoodDetails/FoodDetails';
 import Delivery from './components/Delivery/Delivery';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import Login from './components/LogIn/LogIn';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
 
 export const CartContext = createContext();
 
+
 function App() {
   const [cart, setCart] = useState([])
+  const [loggedInUser, setLoggedInUser] = useState({})
   return (
-    <CartContext.Provider value={[cart, setCart]}>
+    <CartContext.Provider value={[cart, setCart, loggedInUser, setLoggedInUser]}>
 {/* <h3>Name: {cart.name}</h3>
 <h3>quantity: {cart.quantity}</h3> */}
 
@@ -30,12 +35,15 @@ function App() {
           <Route path="/details/:foodId">
             <FoodDetails/>
           </Route>
-          <Route path="/delivery">
-            <Delivery/>
-          </Route>
+          <PrivateRoute path="/delivery">
+           <Delivery/>
+          </PrivateRoute>
           <Route path="/order">
             <PlaceOrder/>
           </Route>
+          <Route path="/login">
+            <Login/>
+           </Route>
           <Route exact path="/">
             <Banner />
             <FoodItems />
